@@ -1,39 +1,53 @@
 <script setup>
 import { ref, computed } from "vue";
 //Random Number
-const randNumbers = ref('');
-const randNumbers_backup = ref('');
+const status = ref('none');
+const showNumber = ref('');
+const respond = ref('');
 const generateNumber = () => {
-  const num = Math.floor(Math.random() * 100);
-  randNumbers.value = num;
-  randNumbers_backup.value = num;
-  setTimeout(()=>{randNumbers.value=' '} , 3000)
+  const randNumbers = Math.floor(Math.random() * 10000);
+  status.value = 'ingame'
+  showNumber.value = randNumbers;
+  respond.value = randNumbers;
+  setTimeout(() => { showNumber.value = '';status.value="ans" }, 2500)
 };
 
 //Answer Input
 const ans = ref('')
 function check() {
-  if (ans.value == randNumbers_backup.value) {
+  if (ans.value == respond.value) {
     generateNumber();
     ans.value = ''
+  } else {
+    status.value = 'none';
+    showNumber.value = '';
   }
 }
+const load = 'play-animation'
+
 </script>
 
 <template>
   <div class="container">
-    <div class="title" v-if="randNumbers ==``">
+    <div class="title" v-if="status == `none`">
       Number Memory
       <div class="intro">The average person can remember 7 numbers at once. Can you do it more?</div>
       <div class="button">
         <button class="btn btn-warning btn-lg active" @click="generateNumber">Start</button>
       </div>
     </div>
-    <h1>{{ randNumbers }}</h1>
-    <!-- ** need correction ** -->
-    <input v-if="randNumbers != ``" v-model="ans" @keyup.enter="check">
-    <button v-if="randNumbers != ``" @click="check">submit</button>
-  </div>
+    <h1>{{ showNumber }}</h1>
+    <br>
+    <div class="progress-bar" v-if="status == `ingame`" id="play-animation"></div>
+    <p v-show="status == `ans`">What was the number?</p>
+    <p v-show="status == `ans`">Press enter to submit</p>
+    <br>
+    <input v-show="status == `ans`" v-model="ans" @keyup.enter="check" style="font-size: 50px; text-align: center;"/>
+    <br>
+    <br>
+    <button class="btn btn-warning btn-lg active" v-if="status == `ans`" @click="check" style="font-size: 160%;">submit</button>
+    </div>
+    
 </template>
 
 <style>
@@ -42,6 +56,9 @@ function check() {
   align-items: center;
   cursor: pointer;
   text-align: center;
+  height: 15px;
+  position: relative;
+  margin: 50px;
 }
 .title {
   font-size: 50px;
@@ -54,4 +71,30 @@ function check() {
 .button {
   text-align: center;
 }
+.container .progress-bar {
+  position: absolute;
+  height: 75%;
+  border-radius: 3px;
+  background-color: brown;
+}
+
+#play-animation {
+  animation: progress-animation 2.5s forwards;
+  size: 1ch;
+}
+
+@keyframes progress-animation {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+p {
+  
+  font-size: 160%;
+  
+}
+
 </style>
