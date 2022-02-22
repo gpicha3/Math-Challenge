@@ -1,4 +1,4 @@
-### Project-INT208-Sec2-G6
+### Project-INT203-Sec2-G6
 ## Game : Number Memory
 
 ## Member : 
