@@ -1,50 +1,50 @@
 <script setup>
 import { ref, computed } from "vue";
 //Random Number
-const randNumbers = ref('');
-const randNumbers_backup = ref('');
+const status = ref('none');
+const showNumber = ref('');
+const respond = ref('');
 const generateNumber = () => {
-  const num = Math.floor(Math.random() * 10000);
-  randNumbers.value = num;
-  randNumbers_backup.value = num;
-  setTimeout(() => { randNumbers.value = ' ' }, 4500)
+  const randNumbers = Math.floor(Math.random() * 10000);
+  status.value = 'ingame'
+  showNumber.value = randNumbers;
+  respond.value = randNumbers;
+  setTimeout(() => { showNumber.value = '' }, 2500)
 };
 
 //Answer Input
 const ans = ref('')
-
 function check() {
-  if (ans.value == randNumbers_backup.value) {
+  if (ans.value == respond.value) {
     generateNumber();
     ans.value = ''
   } else {
-    randNumbers.value = '';
-    ans.value = ''
+    status.value = 'none';
+    showNumber.value = '';
   }
 }
-
 const load = 'play-animation'
 
 </script>
 
 <template>
   <div class="container">
-    <div class="title" v-if="randNumbers == ``">
+    <div class="title" v-if="status == `none`">
       Number Memory
       <div class="intro">The average person can remember 7 numbers at once. Can you do it more?</div>
       <div class="button">
         <button class="btn btn-warning btn-lg active" @click="generateNumber">Start</button>
       </div>
     </div>
-    <h1>{{ randNumbers }}</h1>
-    <input v-if="randNumbers != ``" v-model="ans" @keyup.enter="check" />
-    <button v-if="randNumbers != ``" @click="check" >submit</button>
+    <h1>{{ showNumber }}</h1>
+    <br>
+    <input v-show="status == `ingame`" v-model="ans" @keyup.enter="check" />
+    <button v-if="status == `ingame`" @click="check">submit</button><br>
     <br>
     <br>
-    <div class="progress-bar progress-bar-striped progress-bar-animated" v-if="randNumbers != ``" id="play-animation"></div>
-
-  
-  </div>
+    <div class="progress-bar" v-if="status == `ingame`" id="play-animation"></div>
+    </div>
+    
 </template>
 
 <style>
@@ -53,7 +53,7 @@ const load = 'play-animation'
   align-items: center;
   cursor: pointer;
   text-align: center;
-  height: 25px;
+  height: 15px;
   position: relative;
 }
 .title {
@@ -69,13 +69,14 @@ const load = 'play-animation'
 }
 .container .progress-bar {
   position: absolute;
-  height: 100%;
-  border-radius: 7px;
-  background-color: greenyellow;
+  height: 75%;
+  border-radius: 3px;
+  background-color: brown;
 }
 
 #play-animation {
-  animation: progress-animation 4.5s forwards;
+  animation: progress-animation 2.5s forwards;
+  size: 1ch;
 }
 
 @keyframes progress-animation {
