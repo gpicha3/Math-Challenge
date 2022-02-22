@@ -39,9 +39,16 @@ const load = 'play-animation'
     <h1>{{ showNumber }}</h1>
     <br>
     <div class="progress-bar" v-if="status == `ingame`" id="play-animation"></div>
-    <input v-show="status == `ans`" v-model="ans" @keyup.enter="check" />
-    <button v-if="status == `ans`" @click="check">submit</button><br>
+    <p v-show="status == `ans`">What was the number?</p>
+    <p v-show="status == `ans`">Press enter to submit</p>
+    <div>
+    <input class="form-control form-control-lg" type="text" 
+    v-show="status == `ans`" v-model="ans" @keyup.enter="check">
+    <br>
+    <br>
+    <button class="btn btn-warning btn-lg active" v-if="status == `ans`" @click="check">submit</button>
     </div>
+  </div>
     
 </template>
 
