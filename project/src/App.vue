@@ -14,7 +14,7 @@ let point = ref(0);
 const showNumber = ref('');
 const respond = ref('');
 const generateNumber = () => {
-  const randNumbers = Math.floor(Math.random() * 100000 + 1000);
+  const randNumbers = Math.floor(Math.random() * 100000) + 1000;
   status.value = 'ingame'
   showNumber.value = randNumbers;
   respond.value = randNumbers;
@@ -98,7 +98,6 @@ const progress_bar = 'play-animation'
   text-align: center;
   height: 15px;
   position: relative;
-
 }
 .title {
   font-size: 50px;
@@ -131,4 +130,5 @@ const progress_bar = 'play-animation'
     width: 100%;
   }
 }
+
 </style>
