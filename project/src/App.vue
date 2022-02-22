@@ -9,7 +9,7 @@ const generateNumber = () => {
   status.value = 'ingame'
   showNumber.value = randNumbers;
   respond.value = randNumbers;
-  setTimeout(() => { showNumber.value = '' }, 2500)
+  setTimeout(() => { showNumber.value = '';status.value="ans" }, 2500)
 };
 
 //Answer Input
@@ -38,11 +38,9 @@ const load = 'play-animation'
     </div>
     <h1>{{ showNumber }}</h1>
     <br>
-    <input v-show="status == `ingame`" v-model="ans" @keyup.enter="check" />
-    <button v-if="status == `ingame`" @click="check">submit</button><br>
-    <br>
-    <br>
     <div class="progress-bar" v-if="status == `ingame`" id="play-animation"></div>
+    <input v-show="status == `ans`" v-model="ans" @keyup.enter="check" />
+    <button v-if="status == `ans`" @click="check">submit</button><br>
     </div>
     
 </template>
