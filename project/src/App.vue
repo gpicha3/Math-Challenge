@@ -83,7 +83,7 @@ const name = ref('')
     <div class="title" v-if="status == `none`">
         Number Memory
         <div class="intro">
-            <h1>The average person can remember 7 numbers at once. Can you do it more?</h1>
+            <h1>Can you remember these 4-6 numbers ? Let's try!!!</h1>
         </div>
         <input v-if="status == `none`" v-model="name" style="font-size: 20px; text-align: center;" placeholder="username">
         <div>
