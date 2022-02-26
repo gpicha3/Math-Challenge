@@ -27,7 +27,9 @@ Project ชิ้นนี้เป็นส่วนหนึ่งของร
 - ปุ่มเลือกLevel
 - ปุ่มStart
 
-#### Step การเล่น Number Memory
+### Step การเล่น Number Memory
 ผู้เล่นต้องกรอกชื่อลงไปในช่อง username ต่อมา ผู้เล่นสามารถกดเลือก level ได้ตามความต้องการ เมื่อเลือก level เรียบร้อยแล้วสามารถกดปุ่มเริ่มเกมส์ หรือ ปุ่ม start ได้เลย
+ ![image02](https://i.imgur.com/hU6uipg.png)
+
 
 
