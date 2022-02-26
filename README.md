@@ -21,7 +21,7 @@ Project ชิ้นนี้เป็นส่วนหนึ่งของร
 ### ส่วนประกอบของเกมส์
  
  1.หน้าหลัก
- ![image01](https://imgur.com/pbkhO0j)
+ ![image01](https://i.imgur.com/pbkhO0j.png)
 
 
 
