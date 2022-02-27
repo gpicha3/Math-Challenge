@@ -13,12 +13,12 @@ Project นี้เป็นส่วนหนึ่งของรายวิ
 โปรเจคของพวกเรากลุ่มที่ 6 เป็นโปรเจคที่เกี่ยวกับความจำตัวเลข เป็นเกมส์สนุกๆให้ทุกคนมาลองเล่นกัน โดยเกมส์ที่เราจัดทำขึ้นมานั้นมี 2 เกมส์ด้วยกันคือ Memmory Challenge และ Math Challenge
 โดยผู้เล่นสามารถกอรกชื่อของตนเองได้ตั้งแต่หน้าแรก
 
-![Imgur](https://i.imgur.com/MhtKsCt.png)
+![Imgur](https://i.imgur.com/WjopuPt.jpg)
 
 ## FirstGame : Memory Challenge
 เกมส์ของเรามีชื่อว่า Number Memory เป็นเกมส์ที่วัดความสามารถของแต่ละบุคคลว่า จะสามารถจำเลขได้สูงสุดมากเท่าไหร่ โดย Number Memory ของเรานั้นจะมีเลขอยู่ที่หลัก 1 ไปจนถึงหลัก 100,000 เป็นการ random เลขออกมาให้ทุกๆคนได้ลองท้าทายกัน
 
-![image02](https://i.imgur.com/ofZ3xQu.png)
+![Imgur](https://i.imgur.com/MhtKsCt.png)
 
 ### Step Memory Challenge
 - Step 1 : ผู้เล่นสามารถเลือก level ได้ตามที่ตัวเองต้องการคือ Easy Normal Hard ถ้าผู้เล่นไม่ได้เลือก level จะไม่สามารถกดเริ่มเกมส์ได้
@@ -27,7 +27,7 @@ Project นี้เป็นส่วนหนึ่งของรายวิ
 ## SecoundGame : Math Challenge 
 เกมส์ของเรามีชื่อว่า Math Challenge เป็นเกมส์ที่วัดความสามารถของแต่ละบุคคลว่า จะสามารถในคิดเลขเร็วได้ทันเวลาที่เรากำหนดไว้หรือไม่ โดย Math Challenge ของเรานั้นจะมีเลขตั้งแต่ 1 หลักไปจนถึง เลข 3 หลัก ที่มีการ บวก ลบ คูณ ผู้เล่นจะต้องเลือกผลลัพธ์ที่ถูกต้องจากตัวเลือกที่ให้
 
-![image05](https://i.imgur.com/5iJA7zo.png)
+![Imgur](https://i.imgur.com/K4SntbN.png)
 
 ### Step การเล่น Math Challenge 
 - Step 1 : ผู้เล่นสามารถเลือก level ได้ตามที่ตัวเองต้องการคือ 1 digit / 2 digit / 3 digit ถ้าผู้เล่นไม่ได้เลือก level จะไม่สามารถกดเริ่มเกมส์ได้
@@ -36,7 +36,7 @@ Project นี้เป็นส่วนหนึ่งของรายวิ
 ## About Land of Games.
 ### Home page
 Users can add their names to a box and choose the game they want.
- ![image01](https://i.imgur.com/UnMbP2j.png)
+ ![Imgur](https://i.imgur.com/Lfjtbfz.png)
  
 ### Memory Challenge
 Users can select the level to play games and click start to play games.
