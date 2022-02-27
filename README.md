@@ -12,7 +12,7 @@ Project นี้เป็นส่วนหนึ่งของรายวิ
 ## What about Project?
 
 
-### Game : Memory Challenge
+## Game : Memory Challenge
 เกมส์ของเรามีชื่อว่า Number Memory เป็นเกมส์ที่วัดความสามารถของแต่ละบุคคลว่า จะสามารถจำเลขได้สูงสุดมากเท่าไหร่ โดย Number Memory ของเรานั้นจะมีเลขอยู่ที่หลัก 1 ไปจนถึงหลัก 100,000 เป็นการ random เลขออกมาให้ทุกๆคนได้ลองท้าทายกัน
 ![image02](https://i.imgur.com/ofZ3xQu.png)
 
@@ -24,11 +24,11 @@ Project นี้เป็นส่วนหนึ่งของรายวิ
 เกมส์ของเรามีชื่อว่า Math Challenge เป็นเกมส์ที่วัดความสามารถของแต่ละบุคคลว่า จะสามารถในคิดเลขเร็วได้มากเท่าไหร่ โดย Math Challenge ของเรานั้นจะมีเลข 2 จำนวนที่จำนำไป บวก หรือ คูณ กันเพื่อให้ได้ผลลัพธ์ออกมา ผู้เล่นจะต้องเลือกผลลัพธ์ที่ถูกต้องที่สุด
 ![image05](https://i.imgur.com/bdbDRTx.png)
 
-## Step การเล่น Number Memory
+### Step การเล่น Number Memory
 - Step 1 : ผู้เล่นสามารถเลือก level ได้ตามที่ตัวเองต้องการคือ Easy Normal Hard ถ้าผู้เล่นไม่ได้เลือก level จะไม่สามารถกดเริ่มเกมส์ได้
 - Step 2 : ถ้าผู้เล่นเลือก level เรียบร้อยแล้วสามารถกดปุ่มเริ่มเกมส์ หรือ ปุ่ม start ได้เลย
 
-### About Land of Games.
+## About Land of Games.
 ### Home page
  ![image01](https://i.imgur.com/UnMbP2j.png)
  
