@@ -19,16 +19,16 @@ Project ชิ้นนี้เป็นส่วนหนึ่งของร
 - Step 3 : ถ้าผู้เล่นเลือก level เรียบร้อยแล้วสามารถกดปุ่มเริ่มเกมส์ หรือ ปุ่ม start ได้เลย
 
 ### About Land of Games.
-#### Home page
+### Home page
  ![image01](https://i.imgur.com/UnMbP2j.png)
  
-#### Memory Challenge
+### Memory Challenge
 Users can select the level to play games and click start to play games.
  ![image02](https://i.imgur.com/ofZ3xQu.png)
  ![image03](https://i.imgur.com/fsslyKS.png)
  ![image04](https://i.imgur.com/ucKttbW.png)
  
-#### Math Challenge 
+### Math Challenge 
 Users can select the level of a digit to play games and click start to play games.
 ![image05](https://i.imgur.com/bdbDRTx.png)
 ![image06](https://i.imgur.com/lnpKWRJ.png)
