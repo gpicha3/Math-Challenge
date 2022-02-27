@@ -51,6 +51,8 @@ Users can select the level to play games and click start to play games.
 Users can select the level of a digit to play games and click start to play games.
 ![Imgur](https://i.imgur.com/K4SntbN.png)
 ![Imgur](https://i.imgur.com/Qxm4V8g.png)
+![Imgur](https://i.imgur.com/OhXbipv.png)
+![Imgur](https://i.imgur.com/A5bF8lU.png)
 
 #### Reference from
 [humanbenchmark.com](https://humanbenchmark.com/tests/number-memory?fbclid=IwAR1ERwLrlA4-mICtkFe-RRSlH_s4X3A8WdFErCXgSQk5KbyIwzeGqFFdG6U)
