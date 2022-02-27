@@ -5,7 +5,7 @@ import { ref, computed, reactive } from "vue";
 const status_page = ref('select_game');
 
 const sound = ()=>{
-  const audio = new Audio('src/assets/sound/song.mp3');  
+  const audio = new Audio('src/assets/song.mp3');  
   audio.volume = 0.05;
   audio.loop = true;
   audio.play(); 
@@ -105,7 +105,7 @@ let start_MathChallenge = () =>{
   const randNum1 = generateNumber(range_MathChallenge.value , degit_MathChallenge.value);
   const randNum2 = generateNumber(range_MathChallenge.value , degit_MathChallenge.value);
   const randOperator = operator[generateNumber(3,0)];
-  proposition.value = '${randNum1}${randOperator}${randNum2}';
+  proposition.value = `${randNum1}${randOperator}${randNum2}`
   answer_MathChallenge.value = eval(proposition.value);
   status_page.value = 'process_mathchallenge'
   createChoice(eval(proposition.value), generateChoice());
@@ -212,13 +212,14 @@ const bg_main = computed(()=>{
         <button type="button" class="btn btn-outline-warning" @click="level_MemoryChallenge = 2500" style="margin-right: 10px;">Normal</button>
         <button type="button" class="btn btn-outline-danger"  @click="level_MemoryChallenge = 1000" style="margin-right: 10px;">Hard</button>
       </div><br>    
-        <button class="btn btn-warning btn-lg active" @click="start_MemoryChallenge" :disabled="disabledButton_startMemoryChallenge">Start</button>
+        <button class="btn btn-warning btn-lg active" @click="start_MemoryChallenge" :disabled="disabledButton_startMemoryChallenge">Start</button>&nbsp;&nbsp;
+        <button class="btn btn-warning btn-lg active" @click="status_page = 'select_game'">Back to home</button>
       </div>
     </div>
     <!-- ------ -->
 
     <!-- Memory Challenge : Process -->
-    <div style="margin-top: 8.5em; margin-bottom: 8.5em;" v-if="status_page == `process_memorychallenge`">
+    <div style="margin-top: 3em; margin-bottom: 3.5em;" v-if="status_page == `process_memorychallenge`">
       <h1>{{ remember_number }}</h1>
       <br>
       <div class="progress-bar" :id="progress_bar_MemoryChallenge"></div>
@@ -259,35 +260,35 @@ const bg_main = computed(()=>{
 
     <!-- Math Challenge : Start Page -->
     <div id= "second-game">
-    <div class="title" v-if="status_page == `math_challenge`" style="">
+    <div class="title" v-if="status_page == `math_challenge`" style="margin-top: 1.75em;">
         <h1>Math Challenge</h1>
         <div class="intro">
-          <h6>Will you be able to Calculate the numbers in the given time?</h6>
-        </div>
-        <div class="button">
-          <button class="btn btn-warning btn-lg active" @click="start_MathChallenge">Start</button>
-        </div>
-        <br>
+          <h5>Will you be able to Calculate the numbers in the given time?</h5>
+        </div><br>
         <div class="level">
         <button type="button" class="btn btn-outline-success" @click="range_MathChallenge = 10; degit_MathChallenge = 0" style="margin-right: 10px;">1 Degit</button>
         <button type="button" class="btn btn-outline-warning" @click="range_MathChallenge = 90; degit_MathChallenge = 10" style="margin-right: 10px;">2 Degit</button>
         <button type="button" class="btn btn-outline-danger"  @click="range_MathChallenge = 900; degit_MathChallenge = 100" style="margin-right: 10px;">3 Degit</button>
-      </div>
+      </div><br>
+      <div class="button">
+          <button class="btn btn-warning btn-lg active" @click="start_MathChallenge">Start</button>&nbsp;&nbsp;
+          <button class="btn btn-warning btn-lg active" @click="status_page = 'select_game'">Back to home</button>
+        </div>
     </div>
     <!-- ------ -->
 
     <!-- Math Challenge : Process -->
-    <div style="margin-top: 8.5em;" v-if="status_page == `process_mathchallenge`">
+    <div style="margin-top: 2em;" v-if="status_page == `process_mathchallenge`">
       <h1>{{ proposition }}</h1>
       <div class="progress-bar" :id="progress_bar_MathChallenge"></div>
       <br>
-      <button @click="user_answer_MathChallenge = true; check_MathChallenge();">{{ choice_MathChallenge[0] }}</button>
-      <button @click="user_answer_MathChallenge = false; check_MathChallenge();">{{ choice_MathChallenge[1] }}</button>
+      <button class="btn btn-secondary btn-lg active" @click="user_answer_MathChallenge = true; check_MathChallenge();">{{ choice_MathChallenge[0] }}</button>&nbsp;&nbsp;
+      <button class="btn btn-secondary btn-lg active" @click="user_answer_MathChallenge = false; check_MathChallenge();">{{ choice_MathChallenge[1] }}</button>
     </div>
     <!-- ------ -->
 
     <!-- Math Challenge : Summary -->
-    <div style="margin-top: 20em;" v-if="status_page == `summary_mathchallenge`">
+    <div style="margin-top: 2em;" v-if="status_page == `summary_mathchallenge`">
       <h2>Nice Try !</h2>
       <h2>Your points : {{ point_MathChallenge }}</h2>
       <br>
@@ -302,13 +303,16 @@ const bg_main = computed(()=>{
 </template>
 
 <style> 
-html , #wrapper {
+#wrapper {
+  margin-top: -6em;
+  padding-top: 7em;
   background-color: #2d4057 ;
+  position: relative;
 }
 #div-2 {
   background-color: #4097aa;
   padding: 200px;
-  margin-top: 70px;
+  margin-top: 87px;
   margin-left: 50px;
   margin-right: 50px;
  }
@@ -361,7 +365,8 @@ html , #wrapper {
 
 #second-game{
   text-align: center;
-  margin-bottom: 80px;
+  padding: 30px;
+  /* margin-top: 80px; */
   margin-left: 50px;
   margin-right: 50px;
 }
@@ -391,7 +396,7 @@ html , #wrapper {
   animation: progress-animation 1.75s forwards;
   size: 1.5ch;
   height: 10px;
-  background-color:cornflowerblue;
+  background-color:#F77E4E ;
 }
 #wrapper {
   margin-top: -6em;
