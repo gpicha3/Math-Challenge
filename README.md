@@ -49,7 +49,7 @@ Users can select the level of a digit to play games and click start to play game
 ![image06](https://i.imgur.com/lnpKWRJ.png)
 
 #### Reference from
-[Link to website](https://humanbenchmark.com/tests/number-memory?fbclid=IwAR1ERwLrlA4-mICtkFe-RRSlH_s4X3A8WdFErCXgSQk5KbyIwzeGqFFdG6U)
+[humanbenchmark.com](https://humanbenchmark.com/tests/number-memory?fbclid=IwAR1ERwLrlA4-mICtkFe-RRSlH_s4X3A8WdFErCXgSQk5KbyIwzeGqFFdG6U)
 
  
 
