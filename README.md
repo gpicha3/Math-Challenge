@@ -40,14 +40,14 @@ Users can add their names to a box and choose the game they want.
  
 ### Memory Challenge
 Users can select the level to play games and click start to play games.
- ![image02](https://i.imgur.com/ofZ3xQu.png)
- ![image03](https://i.imgur.com/fsslyKS.png)
- ![image04](https://i.imgur.com/ucKttbW.png)
+ ![Imgur](https://i.imgur.com/MhtKsCt.png)
+ ![Imgur](https://i.imgur.com/VarWAS7.png)
+ ![Imgur](https://i.imgur.com/SROqUrF.png)
  
 ### Math Challenge 
 Users can select the level of a digit to play games and click start to play games.
-![image05](https://i.imgur.com/5iJA7zo.png)
-![image06](https://i.imgur.com/lnpKWRJ.png)
+![Imgur](https://i.imgur.com/K4SntbN.png)
+![[Imgur](https://i.imgur.com/Qxm4V8g.png)
 
 #### Reference from
 [humanbenchmark.com](https://humanbenchmark.com/tests/number-memory?fbclid=IwAR1ERwLrlA4-mICtkFe-RRSlH_s4X3A8WdFErCXgSQk5KbyIwzeGqFFdG6U)
