@@ -18,19 +18,14 @@ Project ชิ้นนี้เป็นส่วนหนึ่งของร
 - Step 2 : ผู้เล่นสามารถเลือก level ได้ตามที่ตัวเองต้องการคือ Easy Normal Hard ถ้าผู้เล่นไม่ได้เลือก level จะไม่สามารถกดเริ่มเกมส์ได้
 - Step 3 : ถ้าผู้เล่นเลือก level เรียบร้อยแล้วสามารถกดปุ่มเริ่มเกมส์ หรือ ปุ่ม start ได้เลย
 
-### ส่วนประกอบของเกมส์
-#### หน้าหลัก
- ![image01](https://i.imgur.com/pbkhO0j.png)
+### About Land of Games.
+#### Home page
+ ![image01](https://i.imgur.com/UnMbP2j.png)
  
-#### ประกอบไปด้วย 
-- ช่อง username
-- ปุ่มเลือกLevel
-- ปุ่มStart
-
-### Step การเล่น Number Memory
-ผู้เล่นต้องกรอกชื่อลงไปในช่อง username และ ผู้เล่นสามารถกดเลือก level ได้ตามความต้องการ เมื่อเลือก level เรียบร้อยแล้วสามารถหกดปุ่ม start ได้เลย
- ![image02](https://i.imgur.com/hU6uipg.png)
- 
+#### Memory Challenge
+ ![image02](https://i.imgur.com/ofZ3xQu.png)
+ ![image03](https://i.imgur.com/fsslyKS.png)
+ ![image04](https://i.imgur.com/ucKttbW.png)
  
 
 
