@@ -1,5 +1,5 @@
 # Project-INT203-Sec2-G6
-Project นี้เป็นส่วนหนึ่งของรายวิชา INT203
+Project นี้เป็นส่วนหนึ่งของรายวิชา INT203 อาจารย์ผู้สอน : ผศ.ดร อุมาพร สุภสิทธิเมธี
 ## Member : 
 | No. | Name              | Student ID   |
 |:---:|-------------------|--------------|
@@ -11,8 +11,7 @@ Project นี้เป็นส่วนหนึ่งของรายวิ
 
 ## What about Project?
 
-
-## Game : Memory Challenge
+## FirstGame : Memory Challenge
 เกมส์ของเรามีชื่อว่า Number Memory เป็นเกมส์ที่วัดความสามารถของแต่ละบุคคลว่า จะสามารถจำเลขได้สูงสุดมากเท่าไหร่ โดย Number Memory ของเรานั้นจะมีเลขอยู่ที่หลัก 1 ไปจนถึงหลัก 100,000 เป็นการ random เลขออกมาให้ทุกๆคนได้ลองท้าทายกัน
 ![image02](https://i.imgur.com/ofZ3xQu.png)
 
