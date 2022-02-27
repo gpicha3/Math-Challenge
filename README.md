@@ -22,7 +22,7 @@ Project นี้เป็นส่วนหนึ่งของรายวิ
 
 ## Game : Math Challenge 
 เกมส์ของเรามีชื่อว่า Math Challenge เป็นเกมส์ที่วัดความสามารถของแต่ละบุคคลว่า จะสามารถในคิดเลขเร็วได้มากเท่าไหร่ โดย Math Challenge ของเรานั้นจะมีเลข 2 จำนวนที่จำนำไป บวก หรือ คูณ กันเพื่อให้ได้ผลลัพธ์ออกมา ผู้เล่นจะต้องเลือกผลลัพธ์ที่ถูกต้องที่สุด
-![image05](https://i.imgur.com/bdbDRTx.png)
+![image05](https://i.imgur.com/5iJA7zo.png)
 
 ### Step การเล่น Number Memory
 - Step 1 : ผู้เล่นสามารถเลือก level ได้ตามที่ตัวเองต้องการคือ Easy Normal Hard ถ้าผู้เล่นไม่ได้เลือก level จะไม่สามารถกดเริ่มเกมส์ได้
@@ -40,7 +40,7 @@ Users can select the level to play games and click start to play games.
  
 ### Math Challenge 
 Users can select the level of a digit to play games and click start to play games.
-![image05](https://i.imgur.com/bdbDRTx.png)
+![image05](https://i.imgur.com/5iJA7zo.png)
 ![image06](https://i.imgur.com/lnpKWRJ.png)
  
 
