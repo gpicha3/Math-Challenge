@@ -37,10 +37,12 @@ Project นี้เป็นส่วนหนึ่งของรายวิ
 
 ### Home page
 Users can add their names to a box and choose the game they want.
+
  ![Imgur](https://i.imgur.com/Lfjtbfz.png)
  
 ### Memory Challenge
 Users can select the level to play games and click start to play games.
+
  ![Imgur](https://i.imgur.com/MhtKsCt.png)
  ![Imgur](https://i.imgur.com/VarWAS7.png)
  ![Imgur](https://i.imgur.com/SROqUrF.png)
