@@ -1,202 +1,417 @@
 <script setup>
-import {
-    ref,
-    computed
-} from "vue";
+import { ref, computed, reactive } from "vue";
 
+// <---- Main System ---->
+const status_page = ref('select_game');
+
+const sound = ()=>{
+  const audio = new Audio('src/assets/sound/song.mp3');  
+  audio.volume = 0.05;
+  audio.loop = true;
+  audio.play(); 
+}
+
+//Name
+const username = ref('')
+
+// <----  ---->
+
+// <---- Memory Challenge ---->
 //Status Page
-const status = ref('none');
-const reset = ref(() => {
-    status.value = 'none'
-    ans.value = ''
-    point.value = 0
-    level.value = 0
+const backtoMemoryChallenge = ref(() => {
+  document.body.style.backgroundColor = 'white';
+  status_page.value = 'memory_challenge'
+  answer_MemoryChallenge.value = undefined
+  point.value = 0
 });
 
 //Disable button-Start
-const disabledButton = computed(() => {
-    return level.value === 0 ? true : false
+const disabledButton_startMemoryChallenge = computed(()=>{
+  return level_MemoryChallenge.value === 0? true : false
 })
 
 //Point Calculate
-let point = ref(0);
+let point_MemoryChallenge = ref(0);
 
 //Progress Bar
-const progress_bar = ref('');
+const progress_bar_MemoryChallenge = ref(undefined);
 
 //Random Number
-const showNumber = ref('');
-const respond = ref('');
-const generateNumber = () => {
-    const randNumbers = Math.floor(Math.random() * 100000) + 1000;
-    status.value = 'ingame'
-    showNumber.value = randNumbers;
-    respond.value = randNumbers;
-    setTimeout(() => {
-        showNumber.value = '';
-        status.value = 'ans'
-    }, level.value)
-    progress_bar.value = selectLevel();
-    ans.value = ''
+const remember_number = ref(0);
+const respond_MemoryChallenge = ref(0);
+const range_MemoryChallenge = ref(100000);
+const degit_MemoryChallenge  = ref(1000);
+
+const generateNumber = (range , degit) =>{
+  return (Math.floor(Math.random() * range) + degit)
 };
 
+const start_MemoryChallenge = () =>{
+  const randNum = generateNumber(range_MemoryChallenge.value , degit_MemoryChallenge.value);
+  status_page.value = 'process_memorychallenge'
+  remember_number.value = randNum;
+  respond_MemoryChallenge.value = randNum;
+  setTimeout(() => { remember_number.value = 0; status_page.value = 'answer_memorychallenge' }, level_MemoryChallenge.value)
+  progress_bar_MemoryChallenge.value = selectLevel();
+  answer_MemoryChallenge.value = undefined
+}
 
 //Select Level
-const level = ref(0)
+const level_MemoryChallenge = ref(0);
 const selectLevel = () => {
-  if (level.value == 5000) {
-    document.body.style.backgroundColor = '#C9FF9C';
+  if (level_MemoryChallenge.value == 5000) {
+    document.body.style.backgroundColor = '#E4FFCF';
     return 'play-animation-easy';
-  } else if (level.value == 2500) {
-    document.body.style.backgroundColor = '#F4F7AD';
+  } else if (level_MemoryChallenge.value == 2500) {
+    document.body.style.backgroundColor = '#FCFFCF';
     return 'play-animation-normal';
   } else {
-    document.body.style.backgroundColor = '#FF9C9C';
+    document.body.style.backgroundColor = '#FFCFCF';
     return 'play-animation-hard';
   }
 };
 
 //Checking Answer Input
-const ans = ref('')
-const ans_backup = ref('');
+const answer_MemoryChallenge = ref(0)
+const backup_ans = ref(0);
 
-const check = () => {
-    ans_backup.value = ans.value;
-    if (ans.value == respond.value) {
-        point.value++;
-        status.value = 'break';
-        return true;
-    } else {
-        status.value = 'back';
-        showNumber.value = '';
-        return false;
+const check_MemoryChallenge = () => {
+  backup_ans.value = answer_MemoryChallenge.value;
+  if (answer_MemoryChallenge.value == respond_MemoryChallenge.value) {
+    point_MemoryChallenge.value++;
+    status_page.value = 'rest_memorychallenge';
+    return true;
+  } else {
+    status_page.value = 'summary_memorychallenge';
+    remember_number.value = 0;
+    return false;
+  }
+}
+// <----  ---->
+
+// <---- Math Challenge ---->
+
+//Math Calculate
+const range_MathChallenge = ref(10)
+const degit_MathChallenge = ref(0)
+const operator = reactive(['+','*','-']);
+const proposition = ref('');
+const answer_MathChallenge = ref(0);
+let array_choice = reactive([]);
+let choice_MathChallenge = reactive([]);
+
+//Start Math Game
+let start_MathChallenge = () =>{
+  const randNum1 = generateNumber(range_MathChallenge.value , degit_MathChallenge.value);
+  const randNum2 = generateNumber(range_MathChallenge.value , degit_MathChallenge.value);
+  const randOperator = operator[generateNumber(3,0)];
+  proposition.value = '${randNum1}${randOperator}${randNum2}';
+  answer_MathChallenge.value = eval(proposition.value);
+  status_page.value = 'process_mathchallenge'
+  createChoice(eval(proposition.value), generateChoice());
+  choice_MathChallenge[0] = array_choice[0];
+  choice_MathChallenge[1] = array_choice[1];
+  setTimeout(()=>{
+    if(user_answer_MathChallenge.value == true || user_answer_MathChallenge.value == false){
+      user_answer_MathChallenge.value = undefined;
+      progress_bar_MathChallenge.value = 'play-animation-math';
+    }else{
+      status_page.value = 'summary_mathchallenge';
     }
+  },1750)
 }
 
-//Name
-const name = ref('')
+//Point
+const point_MathChallenge = ref(0);
+
+//Genarate Choice
+let generateChoice = ()=>{
+  if(degit_MathChallenge.value == 0){
+    return (generateNumber(range_MathChallenge.value , degit_MathChallenge.value+10));
+  }else if(degit_MathChallenge.value == 10){
+    return (generateNumber(range_MathChallenge.value , degit_MathChallenge.value+1000));
+  }else
+    return (generateNumber(range_MathChallenge.value , degit_MathChallenge.value+100000));
+}
+
+//Create Choice
+const createChoice = (answers , choices)=>{
+  array_choice = [undefined,undefined];
+  array_choice[generateNumber(2,0)] = answers;
+  if(array_choice[0] == undefined){
+    array_choice[0] = choices
+  }else
+    array_choice[1] = choices
+}
+
+//Checking Answer
+let user_answer_MathChallenge = ref();
+const isCorrect = ()=>{
+  if(answer_MathChallenge.value == choice_MathChallenge[0]){
+    return true;
+  }else;
+    return false;
+}
+let check_MathChallenge = ()=>{
+  if(user_answer_MathChallenge.value == isCorrect()){
+    point_MathChallenge.value++;
+    progress_bar_MathChallenge.value = '';
+    start_MathChallenge();
+    return true;
+  }else{
+    status_page.value = 'summary_mathchallenge';
+    return false;
+  }
+}
+
+//Reset Math Game
+const backtoMathChallenge = ()=>{
+  status_page.value = 'math_challenge'
+  point_MathChallenge.value = 0
+}
+
+//Progress Bar : Math Game
+let progress_bar_MathChallenge = ref('play-animation-math');
+// <----  ---->
+
+//CSS
+const bg_main = computed(()=>{
+  return status_page.value == `select_game`? 'wrapper' : '';
+})
+
+
 </script>
 
 <template>
-  <div class="container ">
-   <!-- Menu Page -->
-    <div class="title" v-if="status == `none`">
-        Number Memory
-        <div class="intro">
-            <h1>Can you remember these 4-6 numbers ? Let's try!!!</h1>
+<div :id="bg_main">
+   <div id="div-2" v-if="status_page == `select_game`" >
+     <h2 class="welcome">Welcome to the land of games.</h2>
+     <h4 class="welcome">Please Select Games</h4> <br>
+        <!-- <button class="btn btn-warning btn-lg active" @click="status = `memorygame`">Memory Challenge</button> -->
+        <!-- <button class="btn btn-warning btn-lg active" @click="status = `mathgame`">Math Challenge</button> -->
+        <div class="button">
+        <input v-model="username" style="font-size: 27px; text-align: center;" placeholder="username"><br>
+        <br>
+        <button class="btn btn-warning btn-lg active" @click="status_page = `memory_challenge`; sound();">Memory Challenge</button>&nbsp;&nbsp;
+        <button class="btn btn-warning btn-lg active" @click="status_page = `math_challenge`; sound();">Math Challenge</button>&nbsp;&nbsp;
+        <!-- <button class="btn btn-warning btn-lg active" >Meditaion Challenge</button>&nbsp;&nbsp;
+        <button class="btn btn-warning btn-lg active" >Reaction Challenge</button>&nbsp;&nbsp; -->
         </div>
-        <input v-if="status == `none`" v-model="name" style="font-size: 20px; text-align: center;" placeholder="username">
-        <div>
-            <button type="button" class="btn btn-outline-success" @click="level = 5000" style="margin-right: 10px;">Easy</button>
-            <button type="button" class="btn btn-outline-warning" @click="level = 2500" style="margin-right: 10px;">Normal</button>
-            <button type="button" class="btn btn-outline-danger" @click="level = 1000" style="margin-right: 10px;">Hard</button>
+    </div>
+    <!-- Start Memory Game Page -->
+    <div id="first-game">
+          <div class="title" v-if="status_page == `memory_challenge`" style="margin-top: 3.5em;">
+      <h1>Memory Challenge</h1>
+      <div class="intro">
+        <h5>Can you remember these 4-6 numbers ? Let's try !!!</h5>
+      </div><br>
+      <div class="button">
+        <br>
+        <div class="level">
+        <button type="button" class="btn btn-outline-success" @click="level_MemoryChallenge = 5000" style="margin-right: 10px;">Easy</button>
+        <button type="button" class="btn btn-outline-warning" @click="level_MemoryChallenge = 2500" style="margin-right: 10px;">Normal</button>
+        <button type="button" class="btn btn-outline-danger"  @click="level_MemoryChallenge = 1000" style="margin-right: 10px;">Hard</button>
+      </div><br>    
+        <button class="btn btn-warning btn-lg active" @click="start_MemoryChallenge" :disabled="disabledButton_startMemoryChallenge">Start</button>
+      </div>
+    </div>
+    <!-- ------ -->
+
+    <!-- Memory Challenge : Process -->
+    <div style="margin-top: 8.5em; margin-bottom: 8.5em;" v-if="status_page == `process_memorychallenge`">
+      <h1>{{ remember_number }}</h1>
+      <br>
+      <div class="progress-bar" :id="progress_bar_MemoryChallenge"></div>
+    </div>
+
+    <div style="margin-top: 3em; margin-bottom: 3.5em;" v-if="status_page == `answer_memorychallenge`">
+      <h2>What was the number?</h2>
+      <h4>Press enter to submit</h4>
+      <input v-model="answer_MemoryChallenge" @keyup.enter="check_MemoryChallenge" style="font-size: 50px; text-align: center;"/>
+      <br>
+      <br>
+      <button class="btn btn-warning btn-lg active" @click="check_MemoryChallenge" style="font-size: 160%;">submit</button>
+    </div>
+    <!-- ------ -->
+
+    <!-- Memory Challenge : Rest -->
+    <div style="margin-top: 3.5em; margin-bottom: 3.5em;" v-if="status_page == `rest_memorychallenge`">
+      <h2> --- {{username}} --- </h2>
+      <h2>Answer is : {{ respond_MemoryChallenge }}</h2>
+      <h2>Your answer is : {{ backup_ans }}</h2>
+      <h3>Point : {{ point_MemoryChallenge }}</h3>
+      <br>
+      <button class="btn btn-warning btn-lg active" @click="start_MemoryChallenge">Next</button>
+    </div>
+    <!-- ------ -->
+
+    <!-- Memory Challenge : Summary -->
+    <div style="margin-top: 3.5em; margin-bottom: 3.5em;" v-if="status_page == `summary_memorychallenge`">
+      <h2> --- {{username}} --- </h2>
+      <h2>Nice Try !</h2>
+      <h2>Your points : {{ point_MemoryChallenge }}</h2>
+      <br>
+      <button class="btn btn-warning btn-lg active" @click="backtoMemoryChallenge">Back to home</button>
+    </div>
+    <!-- ------ -->
+
+    </div>
+
+    <!-- Math Challenge : Start Page -->
+    <div id= "second-game">
+    <div class="title" v-if="status_page == `math_challenge`" style="">
+        <h1>Math Challenge</h1>
+        <div class="intro">
+          <h6>Will you be able to Calculate the numbers in the given time?</h6>
         </div>
         <div class="button">
-            <button class="btn btn-warning btn-lg active" @click="generateNumber" :disabled="disabledButton">Start</button>
+          <button class="btn btn-warning btn-lg active" @click="start_MathChallenge">Start</button>
         </div>
-        <!-- <v-if @click="level = 5000" v-bind:style="level5000"></v-if> -->
+        <br>
+        <div class="level">
+        <button type="button" class="btn btn-outline-success" @click="range_MathChallenge = 10; degit_MathChallenge = 0" style="margin-right: 10px;">1 Degit</button>
+        <button type="button" class="btn btn-outline-warning" @click="range_MathChallenge = 90; degit_MathChallenge = 10" style="margin-right: 10px;">2 Degit</button>
+        <button type="button" class="btn btn-outline-danger"  @click="range_MathChallenge = 900; degit_MathChallenge = 100" style="margin-right: 10px;">3 Degit</button>
+      </div>
     </div>
     <!-- ------ -->
 
-    <!-- inGame Page -->
-    <div style="margin-top: 10em;">
-        <h1 v-show="status == `ingame`">{{ showNumber }}</h1>
-        <br />
-        <div class="progress-bar" v-if="status == `ingame`" :id="progress_bar"></div>
-        <h2 v-show="status == `ans`">What was the number?</h2>
-        <h4 v-show="status == `ans`">Press enter to submit</h4>
-        <input class="bg-transparent" v-if="status == `ans`" v-model="ans" @keyup.enter="check" style=" font-size: 40px; text-align: center;" />
-        <br />
-        <br />
-        <button class="btn btn-warning btn-lg active" v-if="status == `ans`" @click="check" style="font-size: 160%;">submit</button>
+    <!-- Math Challenge : Process -->
+    <div style="margin-top: 8.5em;" v-if="status_page == `process_mathchallenge`">
+      <h1>{{ proposition }}</h1>
+      <div class="progress-bar" :id="progress_bar_MathChallenge"></div>
+      <br>
+      <button @click="user_answer_MathChallenge = true; check_MathChallenge();">{{ choice_MathChallenge[0] }}</button>
+      <button @click="user_answer_MathChallenge = false; check_MathChallenge();">{{ choice_MathChallenge[1] }}</button>
     </div>
     <!-- ------ -->
 
-    <!-- Break Page -->
-    <h4 v-show="status == `break`">Username : {{name}} </h4>
-    <h2 v-show="status == `break`">Answer is : {{ respond }}</h2>
-    <h2 v-show="status == `break`">Your answer is : {{ ans_backup }}</h2>
-    <h3 v-show="status == `break`">Point : {{ point }}</h3>
-    <br />
-    <button v-show="status == `break`" class="btn btn-warning btn-lg active" @click="generateNumber">Next</button>
+    <!-- Math Challenge : Summary -->
+    <div style="margin-top: 20em;" v-if="status_page == `summary_mathchallenge`">
+      <h2>Nice Try !</h2>
+      <h2>Your points : {{ point_MathChallenge }}</h2>
+      <br>
+      <button class="btn btn-warning btn-lg active" @click="backtoMathChallenge">Back to home</button>
+    </div>
+    </div>
     <!-- ------ -->
 
-    <!-- Summary Page -->
-    <h4 v-show="status == `back`">Username : {{name}} </h4>
-    <h2 v-show="status == `back`">Nice Try !</h2>
-    <h2 v-show="status == `back`">Your points : {{ point }}</h2>
-    <br />
-    <button v-show="status == `back`" class="btn btn-warning btn-lg active" @click="reset">Back to home</button>
-    <!-- ------ -->
-</div>
+  </div>
+
+
 </template>
 
-<style>
-/* @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css%22);  */
-/* html,body{
-    background-color: bisque;
-} */
-
-/* .level5000{
-    background-color: green;
-} */
+<style> 
+html , #wrapper {
+  background-color: #2d4057 ;
+}
+#div-2 {
+  background-color: #4097aa;
+  padding: 200px;
+  margin-top: 70px;
+  margin-left: 50px;
+  margin-right: 50px;
+ }
+.welcome{
+  text-align: center;
+  color: aliceblue;
+}
+.button{
+  text-align: center;
+}
 .container {
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    text-align: center;
-    height: 15px;
-    position: relative;
-    
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  height: 15px;
+  position: relative;
 }
-.title {
-    font-size: 50px;
-    text-align: center;
-    margin-top: 4em;
-    
+.title h1 {
+  font-size: 50px;
+  text-align: center;
 }
-
 .intro h1 {
-    font-size: 25px;
-    text-align: center;
+  font-size: 25px;
+  text-align: center;
 }
-
 .button {
-    text-align: center;
+  text-align: center;
 }
-
 .container .progress-bar {
-    position: absolute;
-    height: 75%;
-    border-radius: 3px;
-    background-color: brown;
+  position: absolute;
+  height: 75%;
+  border-radius: 3px;
+  background-color: brown;
+}
+.intro{
+  text-align: center;
+}
+.level{
+  text-align: center;
+}
+#first-game{
+  /* background-color: bisque; */
+  text-align: center;
+  padding: 90px;
+  margin-top: 80px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
+#second-game{
+  text-align: center;
+  margin-bottom: 80px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
 #play-animation-easy {
-    animation: progress-animation 5s forwards;
-    size: 1ch;
-    background-color: green;
+  animation: progress-animation 5s forwards;
+  size: 1.5ch;
+  height: 10px;
+  background-color: green;
+  
 }
 
 #play-animation-normal {
-    animation: progress-animation 2.5s forwards;
-    size: 1ch;
-    background-color: #F4CB17;
+  animation: progress-animation 2.5s forwards;
+  size: 1.5ch;
+  height: 10px;
+  background-color: yellow;
 }
 
 #play-animation-hard {
-    animation: progress-animation 1s forwards;
-    size: 1ch;
-    background-color: red;
+  animation: progress-animation 1s forwards;
+  size: 1.5ch;
+  height: 10px;
+  background-color: red;
 }
 
+#play-animation-math {
+  animation: progress-animation 1.75s forwards;
+  size: 1.5ch;
+  height: 10px;
+  background-color:cornflowerblue;
+}
+#wrapper {
+  margin-top: -6em;
+  padding-top: 7em;
+  background-color: #2d4057 ;
+  position: relative;
+}
+#div-2 {
+  background-color: #4097aa;
+  padding: 200px;
+  margin-top: 80px;
+  margin-left: 50px;
+  margin-right: 50px;
+ }
 @keyframes progress-animation {
-    0% {
-        width: 0%;
-    }
-
-    100% {
-        width: 100%;
-    }
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 </style>
