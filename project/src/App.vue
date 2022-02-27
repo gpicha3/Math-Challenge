@@ -266,9 +266,9 @@ const bg_main = computed(()=>{
           <h5>Will you be able to Calculate the numbers in the given time?</h5>
         </div><br>
         <div class="level">
-        <button type="button" class="btn btn-outline-success" @click="range_MathChallenge = 10; degit_MathChallenge = 0" style="margin-right: 10px;">1 Degit</button>
-        <button type="button" class="btn btn-outline-warning" @click="range_MathChallenge = 90; degit_MathChallenge = 10" style="margin-right: 10px;">2 Degit</button>
-        <button type="button" class="btn btn-outline-danger"  @click="range_MathChallenge = 900; degit_MathChallenge = 100" style="margin-right: 10px;">3 Degit</button>
+        <button type="button" class="btn btn-outline-success" @click="range_MathChallenge = 10; degit_MathChallenge = 0" style="margin-right: 10px;">1 Digit</button>
+        <button type="button" class="btn btn-outline-warning" @click="range_MathChallenge = 90; degit_MathChallenge = 10" style="margin-right: 10px;">2 Digit</button>
+        <button type="button" class="btn btn-outline-danger"  @click="range_MathChallenge = 900; degit_MathChallenge = 100" style="margin-right: 10px;">3 Digit</button>
       </div><br>
       <div class="button">
           <button class="btn btn-warning btn-lg active" @click="start_MathChallenge">Start</button>&nbsp;&nbsp;
